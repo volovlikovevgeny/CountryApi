@@ -1,8 +1,8 @@
 import { useState } from 'react';
-// import KeyboardArrowDownRounded from '@material-ui/icons/KeyboardArrowDownRounded'
-// import KeyboardArrowUpRounded from '@material-ui/icons/KeyboardArrowUpRounded'
+import KeyboardArrowDownRounded from '@material-ui/icons/KeyboardArrowDownRounded';
+import KeyboardArrowUpRounded from '@material-ui/icons/KeyboardArrowUpRounded';
 import Link from 'next/link';
-import styles from './CountryTable.module.css'
+import styles from './CountryTable.module.css';
 
 const orderBy = (countries, value, direction) => {
     if (direction === 'asc') {
@@ -22,13 +22,13 @@ const SortArrow = ({ direction }) => {
     if (direction === 'desc') {
         return (
             <div className={styles.heading_arrow}>
-                {/* <KeyboardArrowDownRounded /> */}
+                <KeyboardArrowDownRounded />
             </div>
         )
     } else {
         return (
             <div className={styles.heading_arrow}>
-                {/* <KeyboardArrowUpRounded /> */}
+                <KeyboardArrowUpRounded />
             </div>
         )
     }
