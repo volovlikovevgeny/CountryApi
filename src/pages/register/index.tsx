@@ -1,6 +1,7 @@
 import styles from './register.module.css';
 import Layout from '../../components/Layout/Layout';
 import Link from 'next/link';
+import AuthBtn from '../../components/AuthBtn/AuthBtn';
 
 export default function Login() {
     return (
@@ -9,7 +10,6 @@ export default function Login() {
                 <div className={styles.form_container}>
                     <h1>Register</h1>
                     <p>Please fill in this form to create an account.</p>
-
 
                     <label><b>Email</b></label>
                     <input
@@ -39,10 +39,8 @@ export default function Login() {
                         required />
 
                     <p>By creating an account you agree to our <a href="#">Terms of Privacy</a>.</p>
-
-                    <button
-                        type="submit"
-                        className={styles.registerbtn}>Register</button>
+                    
+                    <AuthBtn btn={'Register'} />
                 </div>
 
                 <div className="container signin">

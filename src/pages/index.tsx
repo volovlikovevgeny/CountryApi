@@ -4,7 +4,7 @@ import SearchInput from '../components/SearchField/SearchField';
 import Layout from '../components/Layout/Layout';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ countries }) {
+export default function Home({ countries }: any) {
 
   const [keyword, setKeyword] = useState("")
 
@@ -14,7 +14,7 @@ export default function Home({ countries }) {
       country.region.toLowerCase().includes(keyword) ||
       country.subregion.toLowerCase().includes(keyword))
 
-  const onIputChange = (e) => {
+  const onIputChange = (e: any) => {
     e.preventDefault()
 
     setKeyword(e.target.value.toLowerCase())
@@ -44,5 +44,3 @@ export const getStaticProps = async () => {
     }
   }
 }
-
-// 47.15

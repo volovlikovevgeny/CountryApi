@@ -1,6 +1,7 @@
-import styles from './login.module.css'
 import Layout from '../../components/Layout/Layout';
-import classes from './login.module.css';
+import styles from './login.module.css';
+import AuthBtn from '../../components/AuthBtn/AuthBtn';
+
 
 export default function Login() {
     return (
@@ -9,7 +10,7 @@ export default function Login() {
                 <div className={styles.form_container}>
                     <label ><b>Email</b></label>
                     <input
-                        className={classes.input}
+                        className={styles.input}
                         type="text"
                         placeholder="Enter Email"
                         name="email"
@@ -18,16 +19,14 @@ export default function Login() {
 
                     <label><b>Password</b></label>
                     <input
-                        className={classes.input}
+                        className={styles.input}
                         type="password"
                         placeholder="Enter Password"
                         name="psw"
                         id="psw"
                         required />
 
-                    <button
-                        type="submit"
-                        className={styles.registerbtn}>Login</button>
+                    <AuthBtn btn={'login'} />
                 </div>
             </form>
         </Layout>

@@ -1,0 +1,14 @@
+.authbtn {
+    background-color:var(--text-color);
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .authbtn:hover {
+    opacity: 1;
+  }
