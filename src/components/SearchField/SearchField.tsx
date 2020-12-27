@@ -1,5 +1,5 @@
 import SearchRounded from '@material-ui/icons/SearchRounded'
-import styles from './SearchField.module.css'
+import styles from './SearchField.module.scss'
 
 export default function SearchInput({ ...rest }) {
     return (

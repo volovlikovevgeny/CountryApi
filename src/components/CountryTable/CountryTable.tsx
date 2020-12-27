@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import KeyboardArrowDownRounded from '@material-ui/icons/KeyboardArrowDownRounded';
 import KeyboardArrowUpRounded from '@material-ui/icons/KeyboardArrowUpRounded';
 import Link from 'next/link';
-import styles from './CountryTable.module.css';
+import styles from './CountryTable.module.scss';
 
-const orderBy = (countries, value, direction) => {
+const orderBy = (countries: any, value: string, direction: string) => {
     if (direction === 'asc') {
         return [...countries].sort((a, b) => a[value] > b[value] ? 1 : -1)
     }
@@ -16,7 +16,7 @@ const orderBy = (countries, value, direction) => {
 }
 
 
-const SortArrow = ({ direction }) => {
+const SortArrow = ({ direction }: any) => {
     if (!direction) return <></>
 
     if (direction === 'desc') {
@@ -34,9 +34,8 @@ const SortArrow = ({ direction }) => {
     }
 }
 
-
-const CountryTable = ({ countries }) => {
-    const [direction, setDirection] = useState("")
+const CountryTable = ({ countries }: any) => {
+    const [direction, setDirection] = React.useState<string>("")
     const [value, setValue] = useState("")
     const orderedCountries = orderBy(countries, value, direction)
 
@@ -46,11 +45,11 @@ const CountryTable = ({ countries }) => {
         } else if (direction === 'desc') {
             setDirection('asc')
         } else {
-            setDirection(null)
+            setDirection('')
         }
     }
 
-    const setValueAndDirection = (value) => {
+    const setValueAndDirection = (value: string) => {
         switchDirection()
         setValue(value)
     }
@@ -62,7 +61,7 @@ const CountryTable = ({ countries }) => {
                     onClick={() => setValueAndDirection('name')}
                 >
                     <div>Name</div>
-
+                    
                     <SortArrow direction={direction} />
                 </button>
 
@@ -76,9 +75,8 @@ const CountryTable = ({ countries }) => {
 
                 </button>
             </div>
-
             {
-                orderedCountries.map(country =>
+                orderedCountries.map((country: { alpha3Code: any; name: React.ReactNode; population: React.ReactNode; }) =>
                     <Link href={`/country/${country.alpha3Code}`}>
                         <div className={styles.row}>
                             <div className={styles.name}>{country.name}</div>
@@ -90,4 +88,4 @@ const CountryTable = ({ countries }) => {
         </div>
     )
 }
-export default CountryTable
+export default CountryTable;

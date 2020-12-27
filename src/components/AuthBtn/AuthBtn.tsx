@@ -1,6 +1,7 @@
-import styles from './Auth.module.css';
+import styles from './Auth.module.scss';
+import { AuthBtnProp } from '../../interfaces/AuthBtn';
 
-export default function AuthBtn({ btn }) {
+export default function AuthBtn({ btn }: AuthBtnProp) {
     return (
         <button
             type="submit"

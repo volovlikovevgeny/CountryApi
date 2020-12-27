@@ -1,27 +1,28 @@
 import { useState } from 'react';
 import CountryTable from '../components/CountryTable/CountryTable';
 import SearchInput from '../components/SearchField/SearchField';
+import { Country } from '../interfaces/Country';
+import { CountryApi } from '../interfaces/Country';
 import Layout from '../components/Layout/Layout';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.module.scss';
 
-export default function Home({ countries }: any) {
+export default function Home({ countries }: CountryApi) {
 
-  const [keyword, setKeyword] = useState("")
+  const [keyword, setKeyword] = useState("");
 
   const filteredCountry = countries.filter(
-    (country) =>
+    (country: Country) =>
       country.name.toLowerCase().includes(keyword) ||
       country.region.toLowerCase().includes(keyword) ||
       country.subregion.toLowerCase().includes(keyword))
 
-  const onIputChange = (e: any) => {
+  const onIputChange = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
 
-    setKeyword(e.target.value.toLowerCase())
+    setKeyword(e.target.value.toLowerCase());
   }
 
   return (
-
     <Layout>
       <div className={styles.count}>Found {countries.length} countries</div>
 
@@ -36,7 +37,7 @@ export default function Home({ countries }: any) {
 
 export const getStaticProps = async () => {
   const res = await fetch('https://restcountries.eu/rest/v2/all')
-  const countries = await res.json()
+  const countries = await res.json();
 
   return {
     props: {

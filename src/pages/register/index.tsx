@@ -1,9 +1,10 @@
-import styles from './register.module.css';
+import { ReactElement } from 'react';
+import styles from './register.module.scss';
 import Layout from '../../components/Layout/Layout';
 import Link from 'next/link';
 import AuthBtn from '../../components/AuthBtn/AuthBtn';
 
-export default function Login() {
+export default function Login(): ReactElement {
     return (
         <Layout>
             <form>
@@ -39,7 +40,7 @@ export default function Login() {
                         required />
 
                     <p>By creating an account you agree to our <a href="#">Terms of Privacy</a>.</p>
-                    
+
                     <AuthBtn btn={'Register'} />
                 </div>
 
@@ -49,5 +50,4 @@ export default function Login() {
             </form>
         </Layout>
     )
-
 }

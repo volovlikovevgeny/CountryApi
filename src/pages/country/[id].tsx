@@ -1,24 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ReactElement } from 'react';
 import Layout from '../../components/Layout/Layout';
-import styles from './country.module.css';
+import styles from './country.module.scss';
 import { useRouter } from 'next/router';
 import Loading from '../../utils/loading';
 
-const getCountry = async (id) => {
+const getCountry = async (id: number) => {
     const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`);
     const country = await res.json();
 
-    return country
+    return country;
 }
 
-const Country = ({ country, loading: serverLoading }) => {
+const Country = ({ country, loading: serverLoading }: any) => {
 
 
-    const [border, setBorder] = useState([])
+    const [border, setBorder] = useState([]);
 
     const getBorders = async () => {
 
-        const borders = await Promise.all(country.borders.map((border) => getCountry(border)))
+        const borders = await Promise.all(country.borders.map((border: any) => getCountry(border)))
 
         setBorder(borders)
     }
@@ -52,7 +52,6 @@ const Country = ({ country, loading: serverLoading }) => {
     console.log(border);
 
     return (
-
         <Layout title={country.name}>
             <div className={styles.container}>
 
@@ -139,9 +138,18 @@ const Country = ({ country, loading: serverLoading }) => {
     )
 }
 
-export default Country
+export default Country;
 
-export async function getServerSideProps({ params, req }) {
+
+export async function getServerSideProps({ params, req }: any): Promise<{
+    loading: boolean;
+    props?: undefined;
+} | {
+    props: {
+        country: any;
+    };
+    loading?: undefined;
+}> {
 
     if (!req) {
         return {
@@ -149,9 +157,9 @@ export async function getServerSideProps({ params, req }) {
         }
     }
 
-    const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${params.id}`);
+    const res: Response = await fetch(`https://restcountries.eu/rest/v2/alpha/${params.id}`);
     const country = await getCountry(params.id)
-
+    
     return {
         props: {
             country

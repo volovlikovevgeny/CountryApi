@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './404.module.css';
+import styles from './404.module.scss';
 
 const Custom404: React.FC = () => {
     return (
